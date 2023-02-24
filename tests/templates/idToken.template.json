@@ -1,0 +1,66 @@
+{
+    "iat": 0,
+    "nbf": 0,
+    "exp": 0,
+    "iss": "__issuer__",
+    "aud": "__client_id__",
+    "sub": "__user_subject__",
+    "given_name": "Margaret",
+    "family_name": "Hamilton",
+    "name": "Margaret Hamilton",
+    "email": "margaret@mit.edu",
+    "nonce": "__nounce__",
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/message_type": "LtiResourceLinkRequest",
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/version": "1.3.0",
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/deployment_id": "__deployment__id__",
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/target_link_uri": "https:\/\/tool\/hello.php",
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/resource_link": {
+        "id": "lmstest-12345678_1234567",
+        "title": "test",
+        "description": ""
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/roles": [
+        "http:\/\/purl.imsglobal.org\/vocab\/lis\/v2\/membership#Instructor",
+        "http:\/\/purl.imsglobal.org\/vocab\/lis\/v2\/membership#Administrator",
+        "http:\/\/purl.imsglobal.org\/vocab\/lis\/v2\/institution\/person#Instructor",
+        "http:\/\/purl.imsglobal.org\/vocab\/lis\/v2\/institution\/person#Administrator"
+    ],
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/context": {
+        "id": "1234567",
+        "label": "__course_label__",
+        "title": "__course_title__",
+        "type": [
+            "http:\/\/purl.imsglobal.org\/vocab\/lis\/v2\/course#CourseOffering"
+        ]
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/lis": {
+        "course_offering_sourcedid": "lms:__course_title__",
+        "course_section_sourcedid": "lms:__course_title__"
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/launch_presentation": {
+        "locale": "en-us"
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti-ags\/claim\/endpoint": {
+        "scope": [
+            "https:\/\/purl.imsglobal.org\/spec\/lti-ags\/scope\/lineitem",
+            "https:\/\/purl.imsglobal.org\/spec\/lti-ags\/scope\/lineitem.readonly",
+            "https:\/\/purl.imsglobal.org\/spec\/lti-ags\/scope\/result.readonly",
+            "https:\/\/purl.imsglobal.org\/spec\/lti-ags\/scope\/score"
+        ],
+        "lineitem": "https:\/\/lms\/api\/lti\/ags\/2.0\/deployment\/__deployment__id__\/orgunit\/1234567\/lineitems\/3106e6da-b85b-4ac4-9a04-5dd8ff0394c3",
+        "lineitems": "https:\/\/lms\/api\/lti\/ags\/2.0\/deployment\/__deployment__id__\/orgunit\/1234567\/lineitems"
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/custom": {
+        "url": "hello.php"
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti-nrps\/claim\/namesroleservice": {
+        "context_memberships_url": "https:\/\/lms\/api\/lti\/nrps\/2.0\/deployment\/__deployment__id__\/orgunit\/1234567\/memberships",
+        "service_versions": [
+            "2.0"
+        ]
+    },
+    "https:\/\/purl.imsglobal.org\/spec\/lti\/claim\/tool_platform": {
+        "guid": "12345678-90ab-cdef-1234-567890abcdef",
+        "product_family_code": "testlms"
+    }
+}
