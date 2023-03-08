@@ -11,7 +11,7 @@ use Firebase\JWT\CachedKeySet as FirebaseKeySet;
 class JWTDecoder implements JWTDecoderInterface
 {
     /** @var array<string,FirebaseKey>|FirebaseKey $keyOrKeyArray */
-    private array|FirebaseKey $keyOrKeyArray;
+    private $keyOrKeyArray;
 
 
     /**
