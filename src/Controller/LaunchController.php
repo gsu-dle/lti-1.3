@@ -67,7 +67,7 @@ class LaunchController
             if ($message instanceof Message) {
                 $response = $response->withStatus(200);
                 $response->getBody()->write(
-                    strval(json_encode($message))
+                    strval(json_encode($message, JSON_PRETTY_PRINT))
                 );
             } else {
                 //$response = $response->withStatus(404);
