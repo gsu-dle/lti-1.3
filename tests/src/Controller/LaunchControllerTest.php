@@ -56,7 +56,7 @@ final class LaunchControllerTest extends TestCase
         ];
 
         $this->cookies = [
-            'lti-1.3-testLogin-state-__state__' => 'testLogin-state-__state__'
+            'lti-1_3-testLogin-state-__state__' => 'testLogin-state-__state__'
         ];
 
         /** @var MockObject&LaunchAction $launchAction */
@@ -125,10 +125,10 @@ final class LaunchControllerTest extends TestCase
             ->method('getItem')
             ->withConsecutive(
                 [
-                    self::equalTo("lti-1.3-testLogin-state-__state__")
+                    self::equalTo("lti-1_3-testLogin-state-__state__")
                 ],
                 [
-                    self::stringStartsWith("lti-1.3-{$this->launchPrefix}")
+                    self::stringStartsWith("lti-1_3-{$this->launchPrefix}")
                 ]
             )
             ->willReturn($this->appCacheItem);
@@ -168,7 +168,7 @@ final class LaunchControllerTest extends TestCase
                     self::equalTo('Set-Cookie'),
                     self::callback(function ($cookie): bool {
                         return is_string($cookie)
-                            && str_starts_with($cookie, "lti-1.3-launch=")
+                            && str_starts_with($cookie, "lti-1_3-launch=")
                             && str_contains($cookie, " Secure; ")
                             && str_contains($cookie, " SameSite=none; ")
                             && str_contains($cookie, " HttpOnly; ")

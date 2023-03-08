@@ -102,8 +102,8 @@ final class LoginControllerTest extends TestCase
             ->expects(self::exactly(2))
             ->method('getItem')
             ->withConsecutive(
-                [self::stringStartsWith("lti-1.3-{$this->statePrefix}")],
-                [self::stringStartsWith("lti-1.3-{$this->noncePrefix}")]
+                [self::stringStartsWith("lti-1_3-{$this->statePrefix}")],
+                [self::stringStartsWith("lti-1_3-{$this->noncePrefix}")]
             )
             ->willReturn($this->appCacheItem);
 
@@ -136,7 +136,7 @@ final class LoginControllerTest extends TestCase
                     self::equalTo('Set-Cookie'),
                     self::callback(function ($cookie): bool {
                         return is_string($cookie)
-                            && str_starts_with($cookie, "lti-1.3-{$this->statePrefix}")
+                            && str_starts_with($cookie, "lti-1_3-{$this->statePrefix}")
                             && str_contains($cookie, " Secure; ")
                             && str_contains($cookie, " SameSite=none; ")
                             && str_contains($cookie, " HttpOnly; ")
