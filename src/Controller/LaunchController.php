@@ -62,8 +62,8 @@ class LaunchController
             $response = $response->withHeader('Content-Type', 'application/json');
 
             $cookies = $request->getCookieParams();
-            $launchID = strval($cookies["lti-1.3-launch"] ?? '');
-            $message = $this->appCache->getItem("lti-1.3-{$launchID}")->get();
+            $launchID = strval($cookies["lti-1_3-launch"] ?? '');
+            $message = $this->appCache->getItem("lti-1_3-{$launchID}")->get();
             if ($message instanceof Message) {
                 $response = $response->withStatus(200);
                 $response->getBody()->write(
@@ -110,11 +110,11 @@ class LaunchController
         if ($idTokenState == '') {
             throw new BadRequestException(message: 'Missing \'state\' parameter', request: $request);
         }
-        $state = strval($cookies["lti-1.3-{$idTokenState}"] ?? '');
+        $state = strval($cookies["lti-1_3-{$idTokenState}"] ?? '');
         if ($state == '') {
             throw new BadRequestException(message: 'Missing \'state\' cookie', request: $request);
         }
-        $nonce = strval($this->appCache->getItem("lti-1.3-{$idTokenState}")->get());
+        $nonce = strval($this->appCache->getItem("lti-1_3-{$idTokenState}")->get());
         if ($nonce == '') {
             throw new BadRequestException(message: 'Missing \'nonce\' value', request: $request);
         }
@@ -133,7 +133,7 @@ class LaunchController
         // Cache message
         $cached = $this->appCache->save(
             $this->appCache
-                ->getItem("lti-1.3-{$message->launchID}")
+                ->getItem("lti-1_3-{$message->launchID}")
                 ->set($message)
                 ->expiresAfter(2 * 60 * 60)
         );
@@ -168,7 +168,7 @@ class LaunchController
         if ($scheme === 'https') {
             array_unshift($cookie, 'Secure', 'SameSite=none');
         }
-        array_unshift($cookie, "lti-1.3-launch={$launchID}");
+        array_unshift($cookie, "lti-1_3-launch={$launchID}");
 
         return implode("; ", $cookie);
     }

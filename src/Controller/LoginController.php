@@ -95,7 +95,7 @@ class LoginController
 
         $cached = $this->appCache->save(
             $this->appCache
-                ->getItem("lti-1.3-{$state}")
+                ->getItem("lti-1_3-{$state}")
                 ->set($nonce)
                 ->expiresAfter(60)
         );
@@ -105,7 +105,7 @@ class LoginController
 
         $cached = $this->appCache->save(
             $this->appCache
-                ->getItem("lti-1.3-{$nonce}")
+                ->getItem("lti-1_3-{$nonce}")
                 ->set(time() + 60)
                 ->expiresAfter(60)
         );
@@ -138,7 +138,7 @@ class LoginController
         if ($scheme === 'https') {
             array_unshift($cookie, 'Secure', 'SameSite=none');
         }
-        array_unshift($cookie, "lti-1.3-{$state}={$state}");
+        array_unshift($cookie, "lti-1_3-{$state}={$state}");
 
         return implode("; ", $cookie);
     }

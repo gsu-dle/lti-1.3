@@ -36,10 +36,10 @@ class LaunchMessageMiddleware implements Middleware
         RequestHandler $handler
     ): Response {
         $cookies = $request->getCookieParams();
-        $launchID = strval($cookies["lti-1.3-launch"] ?? '');
-        $message = $this->appCache->getItem("lti-1.3-{$launchID}")->get();
+        $launchID = strval($cookies["lti-1_3-launch"] ?? '');
+        $message = $this->appCache->getItem("lti-1_3-{$launchID}")->get();
         if ($message instanceof Message) {
-            $request = $request->withAttribute('lti-1.3-launch', $message);
+            $request = $request->withAttribute('lti-1_3-launch', $message);
         }
 
         return $handler->handle($request);
