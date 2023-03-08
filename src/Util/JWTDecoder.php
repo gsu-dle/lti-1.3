@@ -16,19 +16,20 @@ class JWTDecoder implements JWTDecoderInterface
 
     /**
      * @param array<string,FirebaseKey>|FirebaseKeySet|FirebaseKey|KeyPair|string $keyOrKeyArray
+     * @param string $defaultAlg
      */
-    public function __construct(array|FirebaseKeySet|FirebaseKey|KeyPair|string $keyOrKeyArray)
-    {
-        if ($keyOrKeyArray instanceof FirebaseKeySet) {
-            /** @var array<string,FirebaseKey> $keyOrKeyArray */
-            $keyOrKeyArray = (array) $keyOrKeyArray;
+    public function __construct(
+        array|FirebaseKeySet|FirebaseKey|KeyPair|string $keyOrKeyArray,
+        string $defaultAlg = 'RS256'
+    ) {
+        if (is_string($keyOrKeyArray)) {
+            $keyOrKeyArray = new FirebaseKey($keyOrKeyArray, $defaultAlg);
+        } elseif ($keyOrKeyArray instanceof KeyPair) {
+            $keyOrKeyArray = new FirebaseKey($keyOrKeyArray->publicKey, $defaultAlg);
         }
-        if ($keyOrKeyArray instanceof KeyPair) {
-            $keyOrKeyArray = $keyOrKeyArray->publicKey;
-        }
-        $this->keyOrKeyArray = is_string($keyOrKeyArray)
-            ? new FirebaseKey($keyOrKeyArray, 'RS256')
-            : $keyOrKeyArray;
+
+        /** @var array<string,FirebaseKey>|FirebaseKey $keyOrKeyArray */
+        $this->keyOrKeyArray = $keyOrKeyArray;
     }
 
 
