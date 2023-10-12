@@ -55,7 +55,6 @@ class JWKS implements JsonSerializable
         $closeToExpire = $rightNow - $this->regenKeyAt;
 
         if ($this->currentKeyPair === null || $rightNow >= $this->currentKeyPair->exp) {
-            $this->keyPairs = [];
 
             if ($this->newKeyPair !== null && $closeToExpire < $this->newKeyPair->exp) {
                 $this->currentKeyPair = $this->newKeyPair;
