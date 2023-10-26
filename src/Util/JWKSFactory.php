@@ -41,13 +41,7 @@ class JWKSFactory implements JWKSFactoryInterface
 
     public function __destruct()
     {
-        if ($this->jwks !== null) {
-            $this->appCache->save(
-                $this->appCache
-                    ->getItem($this->jwksCacheName)
-                    ->set($this->jwks)
-            );
-        }
+       
     }
 
 
